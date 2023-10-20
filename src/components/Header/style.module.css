@@ -1,0 +1,34 @@
+@media (max-width: 800px){
+  .navItems{
+    padding:32px 20px !important;
+  }
+}
+
+.nav {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav img {
+  width: 75px;
+  margin-left: 20px;
+}
+ 
+.nav button{
+  border: 0;
+  background-color: white;
+}
+
+.navItems {
+  font-family: "Philosopher", sans-serif;
+  text-decoration: none;
+  padding: 32px 40px;
+  color: #a4193d;
+}
+
+.nav button:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
