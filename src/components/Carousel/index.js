@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 export default function Carousel(props) {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const posts = usePosts()
+  const posts = [1,2,3]
 
   //Dispatches function to open post
   const closeBtn = (index) => {

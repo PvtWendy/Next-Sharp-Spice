@@ -1,15 +1,9 @@
-import { createContext, useContext, useReducer, useState } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import postsData from "../api/postsData.json";
 //Creates Context and calls initialStates
 const PostsContext = createContext();
-const [data, setData] = useState();
-
-fetch("./fetchPosts.js")
-  .then((res) => res.json)
-  .then((data) => setData(data));
 
 
-console.log(data);
 //Function to be able to call posts anywhere
 export const usePosts = () => {
   return useContext(PostsContext);
@@ -20,11 +14,15 @@ export const PostsProvider = ({ children }) => {
   const reducer = (state, action) => {
     return state;
   };
+  const [data, setData] = useState();
+useEffect(() => {
+  fetch("./fetchPosts.js")
+    .then((res) => res.json)
+},[])
+  
+  const [state, dispatch] = useReducer(reducer, data);
 
-  const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <PostsContext.Provider value={{ posts: state, dispatch }}>
-      {children}
-    </PostsContext.Provider>
+    <PostsContext.Provider value={{ posts: state, dispatch }}>{children}</PostsContext.Provider>
   );
 };
