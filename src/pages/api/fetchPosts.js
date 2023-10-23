@@ -1,6 +1,4 @@
-import postsData from "./postsData.json";
-
+import postsData from "/public/postsData.json";
 export default (req, res) => {
-  res.status(200).json(data);
-  console.log(data)
+  res.status(200).json(postsData);
 };
