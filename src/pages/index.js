@@ -1,22 +1,51 @@
-import Article from '@/components/Article';
-import Carousel from '@/components/Carousel';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
-import { useState } from 'react';
+import Article from "@/components/Article";
+import Carousel from "@/components/Carousel";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import { useEffect, useState } from "react";
 export default function Home() {
   const [page, setPage] = useState("home");
-  let posts = [1,2,3]
+
+  //Loads the post,and only lets the post update after data is complete
+  const [data, setData] = useState([]);
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    fetch("/api/fetchPosts")
+      .then((response) => {
+        return response.json();
+      })
+      .then((postsData) => {
+        setData(postsData);
+      });
+  }, []);
+  useEffect(() => {
+    if (data.length != 0) {
+      setPosts(data);
+    } else {
+      setPosts([]);
+    }
+  }, [data]);
+
+  const shortPostJSX = (index)=>{
+    return(
+      <div>
+        <h1>{posts[index].shortPost.h1}</h1>
+        <p>{posts[index].shortPost.p}</p>
+      </div>
+    )
+  }
+
   const renderedArticles = posts.map((props, index) => (
     <Article
       key={`Article${index}`}
       image={posts[index].image}
       title={posts[index].title}
+      text={shortPostJSX(index)}
       state={index % 2 == 0 ? "left" : "right"}
-      text={posts[index].shortPost}
-      full={posts[index].longPost}
       index={index}
     />
   ));
+
   switch (page) {
     case "home":
       return (

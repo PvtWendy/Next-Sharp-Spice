@@ -1,7 +1,26 @@
 import { useEffect, useRef, useState } from "react";
-import "./style.module.css";
+import styles from "./style.module.css";
 export default function Article(props) {
-  let posts = [1,2,3]
+  //Loads the post,and only lets the post update after data is complete
+  const [data, setData] = useState([]);
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    fetch("/api/fetchPosts")
+      .then((response) => {
+        return response.json();
+      })
+      .then((postsData) => {
+        setData(postsData);
+      });
+  }, []);
+  useEffect(() => {
+    if (data.length != 0) {
+      setPosts(data);
+    } else {
+      setPosts([]);
+    }
+  }, [data]);
+
   //Fadein Fadeout Animation
   const mountedStyle = {
     animation: "inAnimation 500ms ease-in",
@@ -13,15 +32,20 @@ export default function Article(props) {
   const scrollRef = useRef(null);
 
   //Effect to scroll to ref when the state of the current post changes
-  useEffect(() => {
+  {
+    /*
+useEffect(() => {
       if (scrollRef.current) {
         scrollRef.current.scrollIntoView({ behavior: "smooth" }, true);
       }
   },[posts[props.index].state]);
 
+*/
+  }
+
   //Function to open the current post
   const closeBtn = () => {
-    dispatch({ type: "OpenPost", index:props.index});
+    dispatch({ type: "OpenPost", index: props.index });
   };
 
   /*
@@ -29,9 +53,12 @@ export default function Article(props) {
   And renders left and right variants based on props.state property
   */
 
-  if (!posts[props.index].state) {
+  if (true) {
     return (
-      <article className={props.state == "left" ? "left" : "right"} style={posts[props.index].state ? unmountedStyle : null}>
+      <article
+        className={props.state == "left" ? "left" : "right"}
+        style={true ? unmountedStyle : null}
+      >
         <img src={props.image} />
         <div>
           {props.text}
@@ -39,10 +66,10 @@ export default function Article(props) {
         </div>
       </article>
     );
-  }else {
+  } else {
     return (
       <div ref={scrollRef} style={posts[props.index].state ? mountedStyle : null}>
-        <article className="articlePosts">
+        <article className={styles.articlePosts}>
           <img src={props.image}></img>
           <h1>{props.title}</h1>
           {props.full}

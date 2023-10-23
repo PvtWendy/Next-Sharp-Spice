@@ -1,8 +1,8 @@
-import "./style.module.css";
+import styles from "./style.module.css";
 export default function Footer() {
   return (
-    <footer className="footer">
-      <img src={"/images/Titleless-Logo.png"} alt="" />
+    <footer className={styles.footer}>
+      <img src={"/Titleless-Logo.png"} alt="" />
       <section>
         <h2>Redirect</h2>
         <a href="index.html">Home</a>
