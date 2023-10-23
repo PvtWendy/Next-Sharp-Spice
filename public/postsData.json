@@ -1,5 +1,5 @@
-{
-  "post0": {
+[
+  {
     "image": "/Kitchen.png",
     "title": "Unlocking Flavor with Every Hue: Discover the Magic of Color Theory in Culinary Delights!",
     "shortPost": {
@@ -48,8 +48,7 @@
       }
     ]
   },
-
-  "post1": {
+  {
     "image": "/Crostini.png",
     "title": "Tomato Crostini: A Bite of Pure Delight!",
     "shortPost": {
@@ -99,7 +98,7 @@
       }
     ]
   },
-  "post2": {
+  {
     "image": "/Nutrition.png",
     "title": "Savoring Health: Unveiling the Easiest and Most Flavorful Path to Eating Well",
     "shortPost": {
@@ -146,7 +145,7 @@
       }
     ]
   },
-  "post3": {
+  {
     "image": "/Presentation.png",
     "title": "The Art of Food Presentation: Making Every Dish a Visual Delight",
     "shortPost": {
@@ -213,7 +212,7 @@
       }
     ]
   },
-  "post4": {
+  {
     "image": "/Airfryer.png",
     "title": "Mastering the Art of Cooking with Air Fryers: A Comprehensive Guide",
     "shortPost": {
@@ -301,4 +300,4 @@
       }
     ]
   }
-}
+]
