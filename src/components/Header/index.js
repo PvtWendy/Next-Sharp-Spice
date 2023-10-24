@@ -1,10 +1,12 @@
+import Link from "next/link";
 import styles from "./style.module.css";
 export default function Header(props) {
   return (
     <nav className={styles.nav}>
-      <button onClick={props.Home}>
+      <Link href="/about">
         <img src={"/Logo.png"}></img>
-      </button>
+      </Link>
+
       <div>
         <button onClick={props.Home} class={styles.navItems}>
           Home
