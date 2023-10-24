@@ -3,20 +3,20 @@ import styles from "./style.module.css";
 export default function Header(props) {
   return (
     <nav className={styles.nav}>
-      <Link href="/about">
+      <Link href="/">
         <img src={"/Logo.png"}></img>
       </Link>
 
       <div>
-        <button onClick={props.Home} class={styles.navItems}>
+        <Link href="/" className={styles.navItems}>
           Home
-        </button>
-        <button onClick={props.Contact} class={styles.navItems}>
+        </Link>
+        <Link href="/contact" className={styles.navItems}>
           Contact
-        </button>
-        <button onClick={props.About} class={styles.navItems}>
+        </Link>
+        <Link href="/about" className={styles.navItems}>
           About
-        </button>
+        </Link>
       </div>
     </nav>
   );
