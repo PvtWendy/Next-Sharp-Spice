@@ -1,6 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Philosopher&display=swap");
 body{
     margin: 0;
-    font-family: Philosopher;
 }
 @media (max-width: 1024px) {
     .articleContainer article {
@@ -39,7 +39,7 @@ body{
     width: 70vw;
     height: 50vw;
     max-height: 400px;
-    max-width: 600px;
+    max-width: 750px;
     border-radius: 30px;
     object-fit: cover;
   }
