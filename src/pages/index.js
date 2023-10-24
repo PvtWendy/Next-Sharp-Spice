@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [page, setPage] = useState("home");
 
-  //Loads the post,and only lets the post update after data is complete
+  //Loads the post,and only lets the post update after data loading is complete
   const [data, setData] = useState([]);
   const [posts, setPosts] = useState([]);
   useEffect(() => {
