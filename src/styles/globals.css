@@ -39,7 +39,7 @@ body{
     width: 70vw;
     height: 50vw;
     max-height: 400px;
-    max-width: 750px;
+    max-width: 600px;
     border-radius: 30px;
     object-fit: cover;
   }
