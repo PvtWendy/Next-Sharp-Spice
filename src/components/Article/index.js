@@ -25,10 +25,10 @@ export default function Article(props) {
 
   //Fadein Fadeout Animation
   const mountedStyle = {
-    animation: "inAnimation 500ms ease-in",
+    animation: `${styles.inAnimation} 500ms ease-in`,
   };
   const unmountedStyle = {
-    animation: "outAnimation 500ms ease-out",
+    animation: `${styles.outAnimation} 500ms ease-out`,
     animationFillMode: "forwards",
   };
   const scrollRef = useRef(null);
@@ -54,7 +54,7 @@ export default function Article(props) {
     return (
       <article
         className={props.state == "left" ? "left" : "right"}
-        style={true ? unmountedStyle : null}
+        style={postStates[props.index] ? unmountedStyle : null}
       >
         <img src={props.image} />
         <div>
@@ -65,7 +65,7 @@ export default function Article(props) {
     );
   } else {
     return (
-      <div ref={scrollRef} style={posts[props.index].state ? mountedStyle : null}>
+      <div ref={scrollRef} style={postStates[props.index] ? mountedStyle : null}>
         <article className={styles.articlePosts}>
           <img src={props.image}></img>
           <h1>{props.title}</h1>
