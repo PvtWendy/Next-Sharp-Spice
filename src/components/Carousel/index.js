@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 export default function Carousel(props) {
   const [currentSlide, setCurrentSlide] = useState(0);
-
+  const {postStates , dispatch} = usePosts()
   //Loads the post,and only lets the post update after data is complete
   const [data, setData] = useState([]);
   const [posts, setPosts] = useState([]);

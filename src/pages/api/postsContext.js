@@ -1,11 +1,4 @@
-//TODO: this will only be used to update whether a post is open afterwards
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 //Creates Context and calls initialStates
 const PostsContext = createContext();
 
@@ -15,33 +8,28 @@ export const usePosts = () => {
 };
 //Anything wrapped in this can use the Posts Context
 export const PostsProvider = ({ children }) => {
-  const [data, setData] = useState([]);
-  const [posts, setPosts] = useState();
-  useEffect(() => {
-    fetch("/api/fetchPosts")
-      .then((response) => {
-        return response.json();
-      })
-      .then((postsData) => {
-        setData(postsData);
-      });
-  }, []);
-  useEffect(() => {
-    if (data.length != 0) {
-      setPosts(data);
-    } else {
-      setPosts([]);
-    }
-
-    console.log(posts);
-  }, [data]);
+  //Creates a simple array containing the post states
+  const [posts, setPosts] = useState([false, false, false, false, false]);
 
   const reducer = (state, action) => {
+    switch (action.type){
+
+    //Opens the post
+    case "OpenPost":
+        const invertedState = state.map((post, index) => {
+          if (index === action.index) {
+            return { ...post, state: true };
+          } else {
+            return post;
+          }
+        });
+        return invertedState;
+      }
     return state;
   };
 
   const [state, dispatch] = useReducer(reducer, posts);
   return (
-    <PostsContext.Provider value={{ posts: state, dispatch }}>{children}</PostsContext.Provider>
+    <PostsContext.Provider value={{ postStates: state, dispatch }}>{children}</PostsContext.Provider>
   );
 };
