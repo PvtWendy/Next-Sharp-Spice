@@ -26,21 +26,59 @@ export default function Home() {
     }
   }, [data]);
 
-  const shortPostJSX = (index)=>{
-    return(
+  //Converts shortPost to an JSX Object
+  const shortPostJSX = (index) => {
+    return (
       <div>
         <h1>{posts[index].shortPost.h1}</h1>
         <p>{posts[index].shortPost.p}</p>
       </div>
-    )
-  }
+    );
+  };
 
+  //Converts longPost to an JSX Object
+  const longPostJSX = (i) => {
+    return (
+      <div>
+        {posts[i].longPost.map((item, index) => {
+          if (item.hasOwnProperty("h1")) {
+            if (item.hasOwnProperty("p")) {
+              return (
+                <div>
+                  <h1>{item.h1}</h1>
+                  <p>{item.p}</p>
+                </div>
+              );
+            } else {
+              return <h1>{item.h1}</h1>;
+            }
+          } else if (item.hasOwnProperty("h2")) {
+            if (item.hasOwnProperty("p")) {
+              return (
+                <div>
+                  <h2>{item.h2}</h2>
+                  <p>{item.p}</p>
+                </div>
+              );
+            } else {
+              return <h2>{item.h2}</h2>;
+            }
+          } else if (item.hasOwnProperty("p")) {
+            return <p>{item.p}</p>;
+          }
+        })}
+      </div>
+    );
+  };
+
+  //Renders Articles with map based on their props
   const renderedArticles = posts.map((props, index) => (
     <Article
       key={`Article${index}`}
       image={posts[index].image}
       title={posts[index].title}
       text={shortPostJSX(index)}
+      full={longPostJSX(index)}
       state={index % 2 == 0 ? "left" : "right"}
       index={index}
     />
