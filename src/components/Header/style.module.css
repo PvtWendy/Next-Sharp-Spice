@@ -28,7 +28,7 @@
   color: #a4193d;
 }
 
-.nav button:hover {
+.navItems:hover {
   background-color: #ddd;
   cursor: pointer;
 }
