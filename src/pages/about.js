@@ -1,7 +1,14 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { useEffect } from "react";
 import styles from "../components/Article/style.module.css";
+import { usePosts } from "./api/postsContext";
 export default function About() {
+  const {postStates , dispatch} = usePosts()
+  useEffect(() => {
+    dispatch({type:"reset"})
+  }, [])
+  
   return (
     <div>
       <Header />

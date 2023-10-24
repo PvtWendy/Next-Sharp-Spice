@@ -1,7 +1,12 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-
+import { useEffect } from "react";
+import { usePosts } from "./api/postsContext";
 export default function Contact() {
+  const {postStates , dispatch} = usePosts()
+  useEffect(() => {
+    dispatch({type:"reset"})
+  }, [])
   return (
     <div>
       <Header/>

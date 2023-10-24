@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useState } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 //Creates Context and calls initialStates
 const PostsContext = createContext();
 
@@ -12,10 +12,11 @@ export const PostsProvider = ({ children }) => {
   const [posts, setPosts] = useState([false, false, false, false, false]);
 
   const reducer = (state, action) => {
-    switch (action.type){
-
-    //Opens the post
-    case "OpenPost":
+    switch (action.type) {
+      case "reset":
+        return [false, false, false, false, false];
+      //Opens the post
+      case "OpenPost":
         const invertedState = state.map((post, index) => {
           if (index === action.index) {
             return { ...post, state: true };
@@ -24,12 +25,14 @@ export const PostsProvider = ({ children }) => {
           }
         });
         return invertedState;
-      }
+    }
     return state;
   };
 
   const [state, dispatch] = useReducer(reducer, posts);
   return (
-    <PostsContext.Provider value={{ postStates: state, dispatch }}>{children}</PostsContext.Provider>
+    <PostsContext.Provider value={{ postStates: state, dispatch }}>
+      {children}
+    </PostsContext.Provider>
   );
 };
