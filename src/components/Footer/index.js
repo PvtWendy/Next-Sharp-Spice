@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./style.module.css";
 export default function Footer() {
   return (
@@ -5,9 +6,9 @@ export default function Footer() {
       <img src={"/Titleless-Logo.png"} alt="" />
       <section>
         <h2>Redirect</h2>
-        <a href="index.html">Home</a>
-        <a href="contact.html">Contact</a>
-        <a href="about.html">About</a>
+        <Link href="/">Home</Link>
+        <Link href="/contact">Contact</Link>
+        <Link href="/about">About</Link>
       </section>
       <section>
         <h2>Contact</h2>
